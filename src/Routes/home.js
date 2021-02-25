@@ -1,17 +1,12 @@
 const router = require('express').Router();
 const axios = require('axios');
-const admin = require('firebase-admin');
-const serviceAcc = require('../../database_secret.json');
 const HandyStorage = require('handy-storage');
+const db = require('../initFirebase');
 
 const storage = new HandyStorage();
 storage.connect('./store.json')
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAcc),
-})
 
-const db = admin.firestore();
 
 // All repo
 router.get('/user', async (req, res) => {
@@ -34,14 +29,12 @@ router.post('/postRepo', async (req, res) => {
         language: resp.language
     }
     await axios.get(`https://github.com/${storage.state.username}/${req.body.repoName}/blob/main/readme.md`).catch(err => body.readme = null);
-    // if(checkReadme.status === 404){
-    //     body.readme = null
-    // }
+
     const repoRef = db.collection('repos').doc(req.body.repoName);
 
     await repoRef.set(body);
-    console.log(body);
-    res.send("Fuck");
+
+    res.json(body);
 })
 
 module.exports = router
