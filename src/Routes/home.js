@@ -29,7 +29,12 @@ router.post('/postRepo', async (req, res) => {
         forks : resp.forks,
         language: resp.language
     }
-    await axios.get(`https://github.com/${storage.state.username}/${req.body.repoName}/blob/main/README.md`).catch(err => body.readme = null);
+    await axios.get(`https://github.com/${storage.state.username}/${req.body.repoName}/blob/main/README.md`)
+    .catch(async err =>{
+        await axios.get(`https://github.com/${storage.state.username}/${req.body.repoName}/blob/master/README.md`)
+        .then(() => body.readme = `https://github.com/${storage.state.username}/${req.body.repoName}/blob/master/README.md`)
+        .catch(err => body.readme = null)
+    });
 
     const repoRef = db.collection('repos').doc(req.body.repoName);
 
