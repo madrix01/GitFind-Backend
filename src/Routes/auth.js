@@ -38,7 +38,7 @@ router.get('/oauth_callback', async (req, res) => {
     await storage.setState({
         username : resp.data.login
     })
-    res.json({authToken : token});
+    res.sendFile('redire.html',  {root: __dirname});
 })
 
 

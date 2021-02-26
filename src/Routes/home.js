@@ -29,12 +29,11 @@ router.post('/postRepo', async (req, res) => {
         forks : resp.forks,
         language: resp.language
     }
-    await axios.get(`https://github.com/${storage.state.username}/${req.body.repoName}/blob/main/README.md`)
-    .catch(async err =>{
-        await axios.get(`https://github.com/${storage.state.username}/${req.body.repoName}/blob/master/README.md`)
-        .then(() => body.readme = `https://github.com/${storage.state.username}/${req.body.repoName}/blob/master/README.md`)
+    await axios.get(`https://api.github.com/repos/${storage.state.username}/${req.body.repoName}/readme`)
+        .then(resp => resp.data)
+        .then(data => body.readme = data.download_url)
         .catch(err => body.readme = null)
-    });
+
 
     const repoRef = db.collection('repos').doc(req.body.repoName);
 
@@ -42,5 +41,6 @@ router.post('/postRepo', async (req, res) => {
 
     res.json(body);
 })
+
 
 module.exports = router
