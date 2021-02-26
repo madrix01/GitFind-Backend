@@ -10,9 +10,6 @@ const searchRoute = require('./Routes/search');
 
 dotenv.config();
 
-const clientID = process.env.CLIENT_ID
-const clientSecret = process.env.CLIENT_SECRET
-
 //Initialize firebase 
 
 app.use(express.json());
@@ -23,5 +20,5 @@ app.use('/api/home', homeRoute);
 app.use('/api/search', searchRoute);
   
 app.listen(process.env.PORT, () => {
-    console.log('Ayy Ayy captain');
+    console.log('Ayy Ayy captain', process.env.PORT);
 });  
