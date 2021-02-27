@@ -1,32 +1,33 @@
-# Backend GitFind
+# Git-Find🔎
+##### Let use make open source more open
+---
+### Description💻
+Git-Find helps find contibutors for repos and repos for contributors. 
+It is web service saves that your time from scrolling thousands of repos on GitHub so that you can easily find the right repo to contribute to based on the tech stack you want to know and depending on the level i.e beginner, intermediate, and expert. You can also find active contributors in the domain to contribute to your repositories. Thus, you can connect to devs all over the world and promote open source together
+---
+### Tech Stack used👨‍💻
+- **Express** for backend api's
+- **React** as a frontend framework
+- **FireStore** as a for database
+- **Amazon Aws** for hosting
+---
+### Steps to Install ⬇️
+- Clone the repo
+- perform ``` $ npm install```
+- Get you client_id and client_secret from 
+``` https://github.com/settings/applications/new ```
+and set call back route to 
+``` http://localhost:6969/api/oauth_callback```
+- create ``` .env ``` file and add 
+``` CLIENT_SECRET=<client secret here> ```
+```CLIENT_ID=<client id here> ```
+```PORT=6969 ```
+- execute ``` $ npm start ```
+---
+In the last 24 hours we designed and integrated and designed ui 
+and made most of the important api in backend 
 
-### Login
-```
-http://3.18.109.33/api/login
-```
-### UserInfo 
-```
-http://3.18.109.33/api/home/user
-```
-
-### Get List of Repositories
-``` https://api.github.com/users/<username>/repos ```
-
-### Post a repo to feed
-```
-http://3.18.109.33/api/home/postRepo
-# Request body 
-{
-    repoName:string
-    level: string
-    tags: All the tags in one string with space between them for eg. "react html css"
-}
-```
-### Seach a repo
-```
-http://3.18.109.33/api/search/repo
-# Request Body
-{
-    tags : All the search tags in one string with space between them for eg. "react html css"
-}
-```
+### Team Bitwise_coders 
+- Shlok Patel
+- Pushpendra Vishwakarma
+- Harshit Chauhan
