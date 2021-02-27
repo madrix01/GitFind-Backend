@@ -19,6 +19,6 @@ app.use('/api', authRoute);
 app.use('/api/home', homeRoute);
 app.use('/api/search', searchRoute);
   
-app.listen(process.env.PORT, () => {
+app.listen(6969, () => {
     console.log('Ayy Ayy captain', process.env.PORT);
 });  
