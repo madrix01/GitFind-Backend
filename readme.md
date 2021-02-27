@@ -8,6 +8,10 @@ http://3.18.109.33/api/login
 ```
 http://3.18.109.33/api/home/user
 ```
+
+### Get List of Repositories
+``` https://api.github.com/users/<username>/repos ```
+
 ### Post a repo to feed
 ```
 http://3.18.109.33/api/home/postRepo
