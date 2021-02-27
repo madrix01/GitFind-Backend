@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet.frameguard())
 
-app.use('/static', express.static(path.join(__dirname, 'static')))
+app.use('/', express.static('static'));
 
 app.use('/api', authRoute);
 app.use('/api/home', homeRoute);
