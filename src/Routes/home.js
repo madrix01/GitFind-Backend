@@ -16,6 +16,7 @@ router.get('/user', async (req, res) => {
 
 //Post a repo
 router.post('/postRepo', async (req, res) => {
+
     var resp = await axios.get(`https://api.github.com/repos/${storage.state.username}/${req.body.repoName}`);    
     resp = resp.data;
     const body = {
@@ -36,11 +37,32 @@ router.post('/postRepo', async (req, res) => {
 
 
     const repoRef = db.collection('repos').doc(req.body.repoName);
-
     await repoRef.set(body);
 
     res.json(body);
 })
 
+
+// Post collaboration request 
+
+router.post('/postCollaboration', async (req, res) => {
+    const body = {
+        username : storage.state.username,
+        mdProfile : null,
+        tags : req.body.tags,
+        profile_link : `https://github.com/${storage.state.username}`,
+        level : req.body.level
+    }
+
+    await axios.get(`https://api.github.com/repos/${storage.state.username}/${storage.state.username}/readme`)
+        .then(resp => resp.data)
+        .then(data => body.mdProfile = data.download_url)
+        .catch(err => body.mdProfile = null)
+
+    const userRef = db.collection('users').doc(storage.state.username);
+    await userRef.set(body);
+
+    res.json(body);
+})
 
 module.exports = router
