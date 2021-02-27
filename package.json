@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "firebase-admin": "^9.5.0",
     "handy-storage": "^2.1.6",
+    "helmet": "^4.4.1",
     "json-stringify-safe": "^5.0.1",
     "lunr": "^2.3.9",
     "netlify-lambda": "^2.0.3",

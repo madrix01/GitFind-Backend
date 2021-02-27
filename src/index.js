@@ -2,6 +2,8 @@ const express= require("express");
 const dotenv = require("dotenv");
 const cors = require('cors');
 const app = express();
+const helmet = require('helmet')
+
 
 // Routes
 const authRoute = require('./Routes/auth').router;
@@ -14,6 +16,9 @@ dotenv.config();
 
 app.use(express.json());
 app.use(cors());
+app.use(helmet.frameguard())
+
+app.use('/',express.static(__dirname+))
 
 app.use('/api', authRoute);
 app.use('/api/home', homeRoute);
