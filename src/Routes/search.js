@@ -38,9 +38,12 @@ router.post('/collaborators', async (req, res) => {
         this.ref('username');
         this.field('tags');
         this.field('level');
+        userDoc.forEach(function (doc) {
+            this.add(doc);
+        }, this); 
     })
-
     var result = idx.search(`${req.body.tagSearch} ${req.body.level}`);
+    console.log(result);
     var resDoc = [];
     result.forEach((ele) => {
         resDoc.push(userDoc.find(element => element.username === ele.ref));
