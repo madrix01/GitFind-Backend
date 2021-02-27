@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
+const { response } = require('express');
 const HandyStorage = require('handy-storage');
 const db = require('../initFirebase');
 
@@ -64,6 +65,12 @@ router.post('/postCollaboration', async (req, res) => {
     await userRef.set(body);
 
     res.json(body);
+})
+
+router.get('/feed', async (req, res) => {
+    var resp = await db.collection('repos').get();
+    var repoDoc = resp.docs.map(doc => doc.data());
+    res.json(repoDoc);
 })
 
 module.exports = router
