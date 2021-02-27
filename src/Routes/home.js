@@ -28,7 +28,7 @@ router.post('/postRepo', async (req, res) => {
         updated_at : resp.updated_at,
         stars: resp.stargazers_count,
         forks : resp.forks,
-        language: resp.language
+        languages: resp.language
     }
     await axios.get(`https://api.github.com/repos/${storage.state.username}/${req.body.repoName}/readme`)
         .then(resp => resp.data)
@@ -51,7 +51,8 @@ router.post('/postCollaboration', async (req, res) => {
         mdProfile : null,
         tags : req.body.tags,
         profile_link : `https://github.com/${storage.state.username}`,
-        level : req.body.level
+        level : req.body.level,
+        avatar_url : `https://avatars.githubusercontent.com/${storage.state.username}`
     }
 
     await axios.get(`https://api.github.com/repos/${storage.state.username}/${storage.state.username}/readme`)
