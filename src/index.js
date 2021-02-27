@@ -16,10 +16,12 @@ dotenv.config();
 
 app.use(express.json());
 app.use(cors());
-app.use(helmet.frameguard())
-app.use('/', express.static('static'))
+app.use(helmet.frameguard());
 
-
+app.use(
+     "/",
+     express.static(__dirname+"/static")
+);
 app.use('/api', authRoute);
 app.use('/api/home', homeRoute);
 app.use('/api/search', searchRoute);
