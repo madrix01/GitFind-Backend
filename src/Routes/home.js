@@ -17,7 +17,8 @@ router.get('/user', async (req, res) => {
 //Post a repo
 router.post('/postRepo', async (req, res) => {
 
-    var resp = await axios.get(`https://api.github.com/repos/${storage.state.username}/${req.body.repoName}`);    
+    var resp = await axios.get(`https://api.github.com/repos/${storage.state.username}/${req.body.repoName}`)
+        .catch(res.json({"error" : "user not authenticated"}));    
     resp = resp.data;
     const body = {
         repoName : req.body.repoName,
@@ -34,7 +35,6 @@ router.post('/postRepo', async (req, res) => {
         .then(resp => resp.data)
         .then(data => body.readme = data.download_url)
         .catch(err => body.readme = null)
-
 
     const repoRef = db.collection('repos').doc(req.body.repoName);
     await repoRef.set(body);
