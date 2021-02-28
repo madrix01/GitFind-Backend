@@ -17,7 +17,7 @@ You can find an apt repository for your interests and find many developers with 
 - **Amazon Aws** for hosting
 
 ### Challenges we ran into ###
--Github Authorization was the major issue, in this project, as we were using Redirect in our server, there were some CORS Frame Resource Sharing Issue.
+- Github Authorization was the major issue, in this project, as we were using Redirect in our server, there were some CORS Frame Resource Sharing Issue.
 
 ### Steps to Install ⬇️ ###
 - Clone the repo
