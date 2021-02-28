@@ -12,9 +12,10 @@ storage.connect('./store.json')
 // All repo
 router.get('/user', async (req, res) => {
     console.log(storage.state.username);
-    const resp = await axios.get(`https://api.github.com/users/${storage.state.username}`)
+    await axios.get(`https://api.github.com/users/${storage.state.username}`)
+        .then(resp => resp.data)
+        .then(data => res.json(data))
         .catch(err => res.json({error : err}))
-    res.send("Hello");
 })
 
 //Post a repo
