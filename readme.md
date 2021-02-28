@@ -26,8 +26,7 @@ and set call back route to
 ---
 In the last 24 hours we designed and integrated and designed ui 
 and made most of the important api in backend 
-
-<<<<<<< HEAD
+---
 ### Team Bitwise_coders 
 - Shlok Patel
 - Pushpendra Vishwakarma
