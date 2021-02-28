@@ -13,6 +13,7 @@ storage.connect('./store.json')
 router.get('/user', async (req, res) => {
     console.log(storage.state.username);
     const resp = await axios.get(`https://api.github.com/users/${storage.state.username}`)
+        .catch(err => res.json({error : err}))
     res.json(resp.data)
 })
 
