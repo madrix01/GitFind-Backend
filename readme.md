@@ -1,5 +1,5 @@
 # Git-Find🔎
-##### Let use make open source more open
+##### Lets makes open source more open 
 ---
 ### Description💻
 Git-Find helps find contibutors for repos and repos for contributors. 
@@ -26,7 +26,7 @@ and set call back route to
 ---
 In the last 24 hours we designed and integrated and designed ui 
 and made most of the important api in backend 
----
+
 ### Team Bitwise_coders 
 - Shlok Patel
 - Pushpendra Vishwakarma
